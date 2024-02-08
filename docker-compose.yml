@@ -1,0 +1,17 @@
+version: '2'
+services:
+    jenkins:
+        build:
+            context: docker_conf/.
+            dockerfile: Dockerfile
+        ports:
+            - "8080:8080"
+        volumes:
+            - /home/projects/jenkins/data_:/var/jenkins_home/
+            - /home/projects/awsb_devops:/var/jenkins_home/awsb_devops
+            - /var/run/docker.sock:/var/run/docker.sock
+            - /usr/bin/docker:/usr/bin/docker:ro
+        networks: 
+            - jenkins
+networks:
+    jenkins:
