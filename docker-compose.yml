@@ -13,10 +13,12 @@ services:
             - /var/run/docker.sock:/var/run/docker.sock
             - /usr/bin/docker:/usr/bin/docker:ro
         networks: 
-            - jenkins
+            - jenkins_network
 
 volumes:
     jenkins_qa_data:
         driver: local
+        name: jenkins_qa_data
 networks:
-    jenkins:
+    jenkins_network:
+        name: jenkins_network
